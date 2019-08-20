@@ -1,6 +1,6 @@
 <?php 
-$text = 'Hello, world!';
-$image = 'img/1.jpg';
+    $text = 'Hello, world!';
+    $image = 'img/1.jpg';
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ $image = 'img/1.jpg';
 <body>
     <div class="img" style="background-image: url(<?= $image; ?>)">
         <div class="greeting">
-            <h1><?= $text; ?></h1>
+            <h1><?php $text; ?></h1>
         </div>
     </div>    
 </body>
