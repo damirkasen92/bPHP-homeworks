@@ -1,8 +1,6 @@
 <?php 
-$hours = 3;
-$days = 4;
-/*$hours = date("H");
-$days = date("N");*/
+$hours = date("H");
+$days = date("N");
 $greeting = '';
 $day = '';
 $part_of_day = '';
