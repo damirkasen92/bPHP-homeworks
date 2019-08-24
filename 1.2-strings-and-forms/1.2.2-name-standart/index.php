@@ -1,7 +1,7 @@
 <?php
-    $firstName = str_replace(' ', '', mb_ucfirst(mb_strtolower($_POST['firstName'])));
-    $lastName = str_replace(' ', '', mb_ucfirst(mb_strtolower($_POST['lastName'])));
-    $middleName = str_replace(' ', '', mb_ucfirst(mb_strtolower($_POST['middleName'])));
+    $firstName = mb_ucfirst(mb_strtolower(trim($_POST['firstName'])));
+    $lastName = mb_ucfirst(mb_strtolower(trim($_POST['lastName'])));
+    $middleName = mb_ucfirst(mb_strtolower(trim($_POST['middleName'])));
     $fullName = $lastName . ' ' . $firstName . ' ' . $middleName;
     $fio = mb_substr($lastName, 0, 1) . mb_substr($firstName, 0, 1) . mb_substr($middleName, 0, 1);
     $surnameAndInitials = $lastName . ' ' . mb_substr($firstName, 0, 1) . '.' . mb_substr($middleName, 0, 1) . '.';
