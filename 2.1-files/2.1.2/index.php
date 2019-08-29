@@ -22,10 +22,11 @@
 <?php
 $uploaddir = 'uploads';
 $images = scandir($uploaddir);
+$innerHTML = "";
 
 foreach ($images as $key => $value) {
     if ($key >= 2) {
-        echo "<span>$value</span>\n<img src='$uploaddir/$value'>";
+        $innerHTML .= "<br><a href='index.php?value=$value'>X</a>\n<span>$value</span>\n<img src='$uploaddir/$value'>";
     };
 }
 
@@ -35,14 +36,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (in_array(exif_imagetype($_FILES['userfile']['tmp_name']), array(1, 2, 3))) {
             move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
+
+            $images = scandir($uploaddir);
+            $innerHTML = "";
+
             foreach ($images as $key => $value) {
                 if ($key >= 2) {
-                     echo "<img src='$uploaddir/$value'>";
+                    $innerHTML .= "<br><a href='index.php?value=$value'>X</a>\n<span>$value</span>\n<img src='$uploaddir/$value'>";
                 };
             }
+
         } else {
             echo 'На сайт разрешено загружать только изображения в формате JPG, PNG, GIF';
         }
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {    
+    if (isset($_GET['value'])) {
+        if (unlink($uploaddir . '/' . $_GET['value'])) {
+            header("Location: index.php?value=false");
+        };
+    }
+}
+
+echo $innerHTML;
+
 ?>
