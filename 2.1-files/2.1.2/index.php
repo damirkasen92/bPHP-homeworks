@@ -1,3 +1,17 @@
+<?php
+$uploaddir = 'uploads';
+$images = scandir($uploaddir);
+$innerHTML = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {    
+    if (isset($_GET['value'])) {
+        if ($_GET['value'] !== 'false') {
+            unlink($uploaddir . '/' . $_GET['value']);
+            header("Location: index.php?value=false");
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +34,6 @@
 </html>
 
 <?php
-$uploaddir = 'uploads';
-$images = scandir($uploaddir);
-$innerHTML = "";
 
 foreach ($images as $key => $value) {
     if ($key >= 2) {
@@ -49,14 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo 'На сайт разрешено загружать только изображения в формате JPG, PNG, GIF';
         }
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {    
-    if (isset($_GET['value'])) {
-        if (unlink($uploaddir . '/' . $_GET['value'])) {
-            header("Location: index.php?value=false");
-        };
     }
 }
 
