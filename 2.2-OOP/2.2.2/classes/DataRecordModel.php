@@ -10,7 +10,7 @@ class DataRecordModel
         $this->filename = strtolower(static::class) . 's';
         $this->guid = $guid;
     }
-
+    
     public function commit()
     {
         $data = new JsonDataArray($this->filename);
