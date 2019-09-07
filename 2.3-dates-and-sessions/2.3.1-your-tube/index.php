@@ -27,9 +27,49 @@
      *
      * @return bool
      */
+
+    //ВАРИАНТ С КУКИ!!!
+    /*function shouldBeIncremented(): bool
+    {
+        if (isset($_COOKIE['notIncViews'])) {
+            return false;
+        } else {
+            setcookie('notIncViews', 'not', time() + 300);
+            return true;
+        }
+    }*/
+
+    //ВАРИАНТ С СЕССИЕЙ!!!
+
+    session_start();
+
     function shouldBeIncremented(): bool
     {
-        //write your code here
+        $now = setTime();
+
+        if (!isset($_SESSION['endTime'])) {
+            $_SESSION['endTime'] = date_create('+5 minutes');
+
+            return true;
+        } else {
+            $timeDiff = date_diff($now, $_SESSION['endTime']);
+
+            if ($timeDiff->invert === 1) {
+                $_SESSION['endTime'] = date_create('+5 minutes');
+                
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    if (shouldBeIncremented()) {
+        incrementViews(getViews());
+    }
+
+    function setTime() {
+        return date_create('now');
     }
 
     //
