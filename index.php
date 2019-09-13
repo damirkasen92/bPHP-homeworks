@@ -73,7 +73,17 @@
         <ul>
             <li>Занятие 3.1. 
                 <ul>
-                    <li><a href="3.1-exceptions-and-headers/3.1.1-router">Задание 3.3.1</a></li>
+                    <li><a href="3.1-exceptions-and-headers/3.1.1-router">Задание 3.1.1</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Блок 8. PHP7. PSR-*. PHPDOC
+        <ul>
+            <li>Занятие 3.2. 
+                <ul>
+                    <li><a href="3.2-PHP7-PSR-PHPDoc/3.2.1">Задание 3.2.1</a></li>
+                    <li><a href="3.2-PHP7-PSR-PHPDoc/3.2.2">Задание 3.2.2</a></li>
                 </ul>
             </li>
         </ul>
