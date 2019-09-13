@@ -6,7 +6,7 @@
  * @uses $content variable with page html-code
  */
 
-$menu = $data['menu'];
+$menu = (isset($data['menu']));
 ?>
 <!DOCTYPE html>
 <html lang="en">
