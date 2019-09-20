@@ -95,16 +95,15 @@ class TaskManager
     {    
         $formLangText = null;
 
-        if (property_exists($this->query->data_tasks->{$this->idTask}, 'translationTexts')) {
-            $array = $this->query->data_tasks->{$this->idTask}->translationTexts;
-            foreach ($array as $key => $value) {
+        foreach ($this->translationLanguages as $key => $value) {
+            if (property_exists($this->query->data_tasks->{$this->idTask}, 'translationTexts')) {
+                $array = $this->query->data_tasks->{$this->idTask}->translationTexts;
+
                 $formLangText .= "
-                    <span>{$this->query->languages->$key}</span>
-                    <textarea class=\"translate\" name=\"translation_texts[]\">{$value}</textarea>
-                ";
-            }
-        } else {
-            foreach ($this->translationLanguages as $key => $value) {
+                    <span>{$this->query->languages->$value}</span>
+                    <textarea class=\"translate\" name=\"translation_texts[]\">{$array->$value}</textarea>
+                ";   
+            } else {
                 $formLangText .= "
                     <span>{$this->query->languages->$value}</span>
                     <textarea class=\"translate\" name=\"translation_texts[]\"></textarea>
