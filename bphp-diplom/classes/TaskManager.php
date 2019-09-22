@@ -98,10 +98,11 @@ class TaskManager
         foreach ($this->translationLanguages as $key => $value) {
             if (property_exists($this->query->data_tasks->{$this->idTask}, 'translationTexts')) {
                 $array = $this->query->data_tasks->{$this->idTask}->translationTexts;
+                $str = (property_exists($array, $value)) ? $array->$value : null;
 
                 $formLangText .= "
                     <span>{$this->query->languages->$value}</span>
-                    <textarea class=\"translate\" name=\"translation_texts[]\">{$array->$value}</textarea>
+                    <textarea class=\"translate\" name=\"translation_texts[]\">{$str}</textarea>
                 ";   
             } else {
                 $formLangText .= "
