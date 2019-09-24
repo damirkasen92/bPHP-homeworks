@@ -2,7 +2,7 @@
 
 class Action extends TaskManager
 {
-    public function __construct($login, $employee_id, int $idTask = null, $status, $client, $translator, $date, $originalLang, $translationLanguages, $text, $translationTexts, $query)
+    public function __construct($login, $employee_id, $idTask = null, $status, $client, $translator, $date, $originalLang, $translationLanguages, $text, $translationTexts, $query)
     {
         parent::__construct($login, $employee_id, $idTask, $status, $client, $translator, $date, $originalLang, $translationLanguages, $text, $translationTexts, $query);
     }
@@ -16,7 +16,7 @@ class Action extends TaskManager
             $this->removeIdOfTask();
         }
 
-        if ($this->translationTexts !== null) {
+        if ($this->translationTexts !== null && count($this->translationTexts) === count($this->translationLanguages)) {
             $array->translationTexts = $this->addTranslationTexts();
         }
 

@@ -2,7 +2,7 @@
 
 class TaskManager
 {
-    public function __construct($login, $employee_id, int $idTask = null, $status, $client, $translator, $date, $originalLang, $translationLanguages, $text, $translationTexts, $query)
+    public function __construct($login, $employee_id, $idTask = null, $status, $client, $translator, $date, $originalLang, $translationLanguages, $text, $translationTexts, $query)
     {
         $this->login = $login;
         $this->employee_id = $employee_id;

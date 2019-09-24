@@ -2,5 +2,5 @@
 
 class Config
 {
-    const DATABASE_PATH = '/bphp-diplom/database/data.json';
+    const DATABASE_PATH = './database/data.json';
 }

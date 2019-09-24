@@ -6,7 +6,7 @@ class Data extends Config
 
     public function __construct()
     {
-        $this->filename = $_SERVER['DOCUMENT_ROOT'] . parent::DATABASE_PATH;        
+        $this->filename = parent::DATABASE_PATH;        
     }
 
     protected function connect($mode) {

@@ -1,5 +1,5 @@
 <aside class="sidebar">
-    <h2 class="name"><?php echo $name = $query->data_employeers->$employee_id->name ?? null ?></h2>
+    <h2 class="name"><?php echo $name = ($employee_id !== null) ? $query->data_employeers->$employee_id->name : null ?></h2>
     <span class="employee"><?php echo $employeeName = ($employee === MANAGER) ? 'Менеджер' : 'Переводчик' ?></span>
     <ul>
         <li><a href="./index.php">Все</a></li>
