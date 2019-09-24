@@ -7,8 +7,8 @@ $password = (isset($_POST['password'])) ? $_POST['password'] : null;
 $error = '';
 
 try {
-    $сheckUser = new CheckUser($login, $password, $query);
-    $сheckUser->checkUser();
+    $user = new User($login, $password, $query);
+    $user->checkUser();
 } catch (Exception $e) {
     $error = $e->getMessage();
 }

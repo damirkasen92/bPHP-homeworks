@@ -1,6 +1,6 @@
 <?php
 
-class CheckUser
+class User
 {
     public function __construct($login = null, $password = null, $query)
     {
