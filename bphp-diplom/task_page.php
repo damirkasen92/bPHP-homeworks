@@ -2,6 +2,10 @@
 
 include 'const.php';
 
+if ($login === null) {
+    header('Location: ./login.php');
+}
+
 if ($delete === 'delete_manager') {
     $delete = new Action($login, $employee_id, $idOfTask, $status, $client, $translator, $date, $originalLang, $translationLanguages, $text, $translationTexts, $query);
     $delete->deleteTask(); 

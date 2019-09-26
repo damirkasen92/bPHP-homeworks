@@ -20,6 +20,8 @@ class TaskManager
 
     public function showTask($filter)
     {        
+        $texts = ($filter === 'check' || $filter === 'done') ? $this->setLanguageTextarea() : null;
+
         if ($this->idTask === null) {
             $this->idTask = ++$this->query->datatitle->last_task_id;
             $controls = null;
@@ -37,8 +39,6 @@ class TaskManager
                 </label>
             ";
         }
-
-        $texts = ($filter === 'check' || $filter === 'done') ? $this->setLanguageTextarea() : null;
         
         $form = "
             <div class=\"form\">
@@ -95,20 +95,22 @@ class TaskManager
     {    
         $formLangText = null;
 
-        foreach ($this->translationLanguages as $key => $value) {
-            if (property_exists($this->query->data_tasks->{$this->idTask}, 'translationTexts')) {
-                $array = $this->query->data_tasks->{$this->idTask}->translationTexts;
-                $str = (property_exists($array, $value)) ? $array->$value : null;
+        if ($this->idTask !== null) {    
+            foreach ($this->translationLanguages as $key => $value) {
+                if (property_exists($this->query->data_tasks->{$this->idTask}, 'translationTexts')) {
+                    $array = $this->query->data_tasks->{$this->idTask}->translationTexts;
+                    $str = (property_exists($array, $value)) ? $array->$value : null;
 
-                $formLangText .= "
-                    <span>{$this->query->languages->$value}</span>
-                    <textarea class=\"translate\" name=\"translation_texts[]\">{$str}</textarea>
-                ";   
-            } else {
-                $formLangText .= "
-                    <span>{$this->query->languages->$value}</span>
-                    <textarea class=\"translate\" name=\"translation_texts[]\"></textarea>
-                ";
+                    $formLangText .= "
+                        <span>{$this->query->languages->$value}</span>
+                        <textarea class=\"translate\" name=\"translation_texts[]\">{$str}</textarea>
+                    ";   
+                } else {
+                    $formLangText .= "
+                        <span>{$this->query->languages->$value}</span>
+                        <textarea class=\"translate\" name=\"translation_texts[]\"></textarea>
+                    ";
+                }
             }
         }
 

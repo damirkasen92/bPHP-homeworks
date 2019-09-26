@@ -2,6 +2,10 @@
 
 include 'const.php';
 
+if ($login === null) {
+    header('Location: ./login.php');
+}
+
 switch ($statusOfForm) {
     case 'done_translator':
         $status = 'check';
